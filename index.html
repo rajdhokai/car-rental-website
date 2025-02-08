@@ -751,7 +751,7 @@
               <button
                 type="button"
                 class="btn-custom-primary"
-                onclick="sendWhatsAppMessage()"
+                onclick="sendWhatsAppMessage1()"
               >
                 Send Message
               </button>
@@ -837,18 +837,30 @@
     <script>
       function sendWhatsAppMessage() {
         // Get selected values
-        let brand = document.getElementById("brand").value;
-        let type = document.getElementById("type").value;
-        let price = document.getElementById("price").value;
+        let brand = document.getElementById("brand").value.trim();
+        let type = document.getElementById("type").value.trim();
+        let price = document.getElementById("price").value.trim();
 
-        // Check if all fields are selected
-        if (!brand || !type || !price) {
+        // Debugging: Check values in the console
+        console.log("Brand:", `"${brand}"`);
+        console.log("Type:", `"${type}"`);
+        console.log("Price:", `"${price}"`);
+
+        // Ensure all fields are selected
+        if (
+          brand === "" ||
+          type === "" ||
+          price === "" ||
+          brand === "Select Brand" ||
+          type === "Select Type" ||
+          price === "Price Range"
+        ) {
           alert("Please select all options before searching!");
           return;
         }
 
-        // WhatsApp number (change to your desired number)
-        let phoneNumber = "+919967999444"; // Format: CountryCode + Number (e.g., 91 for India)
+        // WhatsApp number (change if needed)
+        let phoneNumber = "+919967999444";
 
         // Create WhatsApp message
         let message = `Hello, I am interested in renting a ${type} (${brand}) within the price range of ${price}. Please provide more details.`;
@@ -892,7 +904,7 @@
 
     <!-- (Get In touch Section) Contact us form validation -->
     <script>
-      function sendWhatsAppMessage() {
+      function sendWhatsAppMessage1() {
         // Get input values
         let name = document.getElementById("name").value.trim();
         let email = document.getElementById("email").value.trim();
